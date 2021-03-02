@@ -21,11 +21,7 @@ export default function Card() {
   }
 
   return (
-    <div
-      style={{
-        display: "flex",
-      }}
-    >
+    <div style={{ display: "flex", flexWrap: "wrap" }}>
       {products.map((product) => {
         return (
           <div
@@ -35,6 +31,7 @@ export default function Card() {
               border: "1px solid white",
               backgroundColor: "white",
               padding: "10px",
+              margin: "21px",
             }}
             onClick={function handleViewPost() {
               ViewPost(product._id);

@@ -30,6 +30,7 @@ export default function ProductDetail() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          fontSize: "10px",
         }}
       >
         <div
@@ -40,15 +41,30 @@ export default function ProductDetail() {
             justifyContent: "center",
             alignItems: "center",
             border: "1px solid white",
-            borderRadius: "21px",
+            borderRadius: "10px",
             backgroundColor: "white",
             padding: "50px",
           }}
         >
-          <div>
-            <img src="{Product.bimage_url}" alt="Image" />
+          <div
+            style={{
+              width: "40%",
+            }}
+          >
+            <img
+              src={Product.image_url}
+              alt="Image"
+              width="200px"
+              height="200px"
+            />
           </div>
-          <div>
+          <div
+            style={{
+              margin: "50px",
+              width: "60%",
+              overflow: "hidden",
+            }}
+          >
             <div>{Product.name}</div>
             <div>review</div>
             <div>{Product.description}</div>

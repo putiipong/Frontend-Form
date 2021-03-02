@@ -1,5 +1,6 @@
 import Header from "../component/Header";
 import Footer from "../component/Footer";
+import ButtonAddToCart from "../component/ButtonAddToCart";
 import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 
@@ -43,7 +44,7 @@ export default function ProductDetail() {
             border: "1px solid white",
             borderRadius: "10px",
             backgroundColor: "white",
-            padding: "50px",
+            padding: "22px",
           }}
         >
           <div
@@ -60,18 +61,33 @@ export default function ProductDetail() {
           </div>
           <div
             style={{
-              margin: "50px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-around",
+              margin: "30px",
               width: "60%",
               overflow: "hidden",
             }}
           >
             <div>{Product.name}</div>
+            <br />
             <div>review</div>
+            <br />
             <div>{Product.description}</div>
+            <br />
             <div>price</div>
-            <div>฿{Product.price}</div>
+            <div
+              style={{
+                color: "#FA7268",
+                fontSize: "20px",
+                fontFamily: "boonBlod",
+              }}
+            >
+              ฿ {Product.price}
+            </div>
+            <br />
             <div>Quantity</div>
-            <button>ADD TO CART</button>
+            <ButtonAddToCart />
           </div>
         </div>
       </div>

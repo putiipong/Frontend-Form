@@ -1,3 +1,6 @@
+import { ReactComponent as COBLogo } from "../logo.svg";
+import { ReactComponent as CartLogo } from "../icons/cart.svg";
+
 function Header() {
   return (
     <div
@@ -11,7 +14,7 @@ function Header() {
       }}
     >
       <div>
-        <h1>logo</h1>
+        <COBLogo />
       </div>
       <div
         style={{
@@ -29,7 +32,8 @@ function Header() {
         <span>Accessories</span>
       </div>
       <div>
-        <h1>Cart</h1>
+        <CartLogo />
+        <span>Cart</span>
       </div>
     </div>
   );

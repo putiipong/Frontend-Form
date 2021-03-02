@@ -21,81 +21,89 @@ export default function Card() {
   }
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap" }}>
-      {products.map((product) => {
-        return (
-          <div
-            style={{
-              width: "210px",
-              height: "250px",
-              display: "flex",
-              flexDirection: "column",
-              borderRadius: "20px",
-              border: "1px solid white",
-              backgroundColor: "white",
-              // padding: "10px",
-              margin: "21px",
-              fontSize: "10px",
-            }}
-            onClick={function handleViewPost() {
-              viewPost(product._id);
-            }}
-          >
+    <div>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {products.map((product) => {
+          return (
             <div
               style={{
-                width: "100%",
-                height: "60%",
+                width: "210px",
+                height: "250px",
                 display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                // overflow: "hidden",
+                flexDirection: "column",
+                borderRadius: "20px",
+                border: "1px solid white",
+                backgroundColor: "white",
+                margin: "21px",
+                fontSize: "10px",
+              }}
+              onClick={function handleViewPost() {
+                viewPost(product._id);
               }}
             >
-              <img
-                src={product.image_url}
-                alt="Image"
-                width="210px"
-                height="100%"
+              <div
                 style={{
-                  borderRadius: "10px",
+                  width: "100%",
+                  height: "60%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
-              />
-            </div>
-            <div>
+              >
+                <img
+                  src={product.image_url}
+                  alt="Image"
+                  width="210px"
+                  height="100%"
+                  style={{
+                    borderRadius: "10px",
+                  }}
+                />
+              </div>
+              <div>
+                <div
+                  style={{
+                    display: "flex",
+                    marginLeft: "10px",
+                  }}
+                >
+                  <div>
+                    <img
+                      src={product.brand_info.url}
+                      alt="Brandner"
+                      width="50px"
+                      style={{ borderRadius: "10px", marginRight: "10px" }}
+                    />
+                  </div>
+                  <div style={{ overflow: "hidden" }}>{product.name}</div>
+                </div>
+              </div>
               <div
                 style={{
                   display: "flex",
+                  justifyContent: "space-around",
                 }}
               >
                 <div>
-                  <img
-                    src={product.brand_info.url}
-                    alt="Brandner"
-                    width="50px"
-                    style={{ borderRadius: "10px" }}
-                  />
+                  <p>Price</p>
+                  <div>฿{product.price}</div>
                 </div>
-                <div style={{ overflow: "hidden" }}>{product.name}</div>
+                <div>
+                  <p>review</p>
+                  <div></div>
+                </div>
               </div>
             </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-around",
-              }}
-            >
-              <div>
-                <p>Price</p>
-                <div>฿{product.price}</div>
-              </div>
-              <div>
-                <p>review</p>
-                <div></div>
-              </div>
-            </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }

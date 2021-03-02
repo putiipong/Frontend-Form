@@ -5,13 +5,29 @@ export default function Footer() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "5vh",
+        height: "54px",
         color: "white",
-        backgroundColor: "#008B8B",
-        bottom: "0px",
+        backgroundColor: "#1A586A",
+        left: "0%",
+        right: "0%",
+        bottom: "0%",
       }}
     >
-      <footer>Copyright © 2021 ChomCHOB.All RightS Reserved</footer>
+      <footer
+        style={{
+          fontSize: "12px",
+          styleName: "Text-Small",
+          fontFamily: "Boon",
+          fontSize: "12px",
+          fontStyle: " normal",
+          fontWeight: "400",
+          lineHeight: "14px",
+          letterSpacing: "0px",
+          textAlign: "left",
+        }}
+      >
+        Copyright © 2021 ChomCHOB.All RightS Reserved
+      </footer>
     </footer>
   );
 }

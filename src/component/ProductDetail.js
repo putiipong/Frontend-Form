@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import Header from "../component/Header";
+import { useHeader } from "../component/Header";
 
 function ProductDetail() {
   const [post, setPost] = useState({});
@@ -32,7 +32,7 @@ function ProductDetail() {
         minWidth: "100vh",
       }}
     >
-      <Header />
+      <useHeader />
       <div className="Post-item">
         <h3>{post.title}</h3>
         <h4>{post.content}</h4>

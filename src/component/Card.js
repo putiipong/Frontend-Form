@@ -26,23 +26,24 @@ export default function Card() {
         style={{
           display: "flex",
           flexWrap: "wrap",
-          justifyContent: "center",
+          justifyContent: "flex-start",
           alignItems: "center",
+          marginLeft: "80px",
         }}
       >
         {products.map((product) => {
           return (
             <div
               style={{
-                width: "210px",
-                height: "250px",
+                width: "275px",
+                height: "308px",
                 display: "flex",
                 flexDirection: "column",
                 borderRadius: "20px",
                 border: "1px solid white",
                 backgroundColor: "white",
                 margin: "21px",
-                fontSize: "10px",
+                fontSize: "14px",
               }}
               onClick={function handleViewPost() {
                 viewPost(product._id);
@@ -50,8 +51,8 @@ export default function Card() {
             >
               <div
                 style={{
-                  width: "100%",
-                  height: "60%",
+                  width: "275px",
+                  height: "196px",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
@@ -60,8 +61,8 @@ export default function Card() {
                 <img
                   src={product.image_url}
                   alt="Image"
-                  width="210px"
-                  height="100%"
+                  width="275px"
+                  height="196px"
                   style={{
                     borderRadius: "10px",
                   }}
@@ -78,7 +79,8 @@ export default function Card() {
                     <img
                       src={product.brand_info.url}
                       alt="Brandner"
-                      width="50px"
+                      width="40px"
+                      height="40px"
                       style={{ borderRadius: "10px", marginRight: "10px" }}
                     />
                   </div>
@@ -92,11 +94,11 @@ export default function Card() {
                 }}
               >
                 <div>
-                  <p>Price</p>
-                  <div>฿{product.price}</div>
+                  <p style={{ fontSize: "12px" }}>Price</p>
+                  <div style={{ color: "#FF6F61" }}>฿{product.price}</div>
                 </div>
                 <div>
-                  <p>review</p>
+                  <p style={{ fontSize: "12px" }}>review</p>
                   <div></div>
                 </div>
               </div>

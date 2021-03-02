@@ -7,11 +7,12 @@ export default function ButtonAddToCart() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#FA7268",
+        backgroundColor: "#FF6F61",
         color: "white",
-        width: "40%",
-        height: "35px",
-        borderRadius: "8px",
+        width: "206px",
+        height: "48px",
+        borderRadius: "10px",
+        fontSize: "14px",
       }}
     >
       <AddCartLogo /> <span>ADD TO CART</span>

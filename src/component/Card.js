@@ -48,7 +48,6 @@ export default function Card() {
                 display: "flex",
                 flexDirection: "column",
                 borderRadius: "20px",
-                border: "1px solid white",
                 backgroundColor: "white",
                 margin: "21px",
                 fontSize: "14px",
@@ -59,11 +58,13 @@ export default function Card() {
             >
               <div
                 style={{
-                  width: "275px",
-                  height: "196px",
+                  // width: "275px",
+                  height: "195px",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
+                  overflow: "hidden",
+                  padding: "0px",
                 }}
               >
                 <img
@@ -72,7 +73,9 @@ export default function Card() {
                   width="275px"
                   height="196px"
                   style={{
-                    borderRadius: "10px",
+                    borderRadius: "20px",
+                    position: "absolute",
+                    margin: "0",
                   }}
                 />
               </div>

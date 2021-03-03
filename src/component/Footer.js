@@ -18,7 +18,7 @@ export default function Footer() {
           fontSize: "12px",
           styleName: "Text-Small",
           fontFamily: "Boon",
-          fontSize: "12px",
+          fontSizeAdjust: "12px",
           fontStyle: " normal",
           fontWeight: "400",
           lineHeight: "14px",

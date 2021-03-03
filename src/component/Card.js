@@ -1,23 +1,31 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import Star from "../icons/star.svg";
+import StarFull from "../icons/starFull.svg";
 
 export default function Card() {
   const [products, setProducts] = useState([]);
   let history = useHistory();
+  const star = <img src={Star} alt="star" width="12px" height="12px" />;
+  const starfull = <img src={StarFull} alt="star" width="12px" height="12px" />;
 
   useEffect(() => {
     async function getProduct() {
       let results = await fetch("https://cc-mock-api.herokuapp.com/product");
       let products = await results.json();
       setProducts(products);
-      console.log(products);
     }
     getProduct();
   }, []);
 
   function viewPost(productID) {
     history.push("/ProductDetail/" + productID);
+  }
+
+  function calRating(rating) {
+    const array = [star, star, star, star, star];
+    return array.fill(starfull, 0, rating);
   }
 
   return (
@@ -60,7 +68,7 @@ export default function Card() {
               >
                 <img
                   src={product.image_url}
-                  alt="Image"
+                  alt="photoItem"
                   width="275px"
                   height="196px"
                   style={{
@@ -72,6 +80,7 @@ export default function Card() {
                 <div
                   style={{
                     display: "flex",
+                    marginTop: "8px",
                     marginLeft: "10px",
                   }}
                 >
@@ -98,8 +107,10 @@ export default function Card() {
                   <div style={{ color: "#FF6F61" }}>฿{product.price}</div>
                 </div>
                 <div>
-                  <p style={{ fontSize: "12px" }}>review</p>
-                  <div></div>
+                  <p style={{ fontSize: "12px" }}>
+                    Review ({product.review.number} reviews)
+                  </p>
+                  <div>{calRating(product.review.rating)}</div>
                 </div>
               </div>
             </div>

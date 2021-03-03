@@ -1,9 +1,10 @@
 import { ReactComponent as COBLogo } from "../logo.svg";
 import { ReactComponent as CartLogo } from "../icons/cart.svg";
 import { useState } from "react";
+import { useTotal } from "../utilitie/usetotal";
 
 export default function Header() {
-  let [totalItem, settotalItem] = useState(0);
+  let { totalItem, settotalItem } = useTotal();
 
   return (
     <div

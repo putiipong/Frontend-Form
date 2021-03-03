@@ -2,12 +2,15 @@ import Header from "../component/Header";
 import Footer from "../component/Footer";
 import ButtonAddToCart from "../component/ButtonAddToCart";
 import { useState, useEffect } from "react";
-import { useParams, useHistory, withRouter } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import Star from "../icons/star.svg";
+import StarFull from "../icons/starFull.svg";
 
 export default function ProductDetail() {
-  const [Product, setProduct] = useState({});
+  const [product, setProduct] = useState({});
   const [count, setCount] = useState(1);
-  //   let [totalItem, settotalItem] = useHeader();
+  const star = <img src={Star} alt="star" width="12px" height="12px" />;
+  const starfull = <img src={StarFull} alt="star" width="12px" height="12px" />;
   let params = useParams();
   console.log(params.ProductID);
 
@@ -35,9 +38,12 @@ export default function ProductDetail() {
     setCount(count + 1);
   }
 
-  function handleAddToCart() {
-    // settotalItem(totalItem + count);
+  function calRating(rating) {
+    const array = [star, star, star, star, star];
+    return array.fill(starfull, 0, rating);
   }
+
+  function handleAddToCart() {}
 
   return (
     <div style={{ backgroundColor: "#E5E5E5", height: "638px" }}>
@@ -70,8 +76,8 @@ export default function ProductDetail() {
             }}
           >
             <img
-              src={Product.image_url}
-              alt="Image"
+              src={product.image_url}
+              alt="photoItem"
               width="460px"
               height="400px"
             />
@@ -86,11 +92,14 @@ export default function ProductDetail() {
               overflow: "hidden",
             }}
           >
-            <div style={{ fontSize: "28px" }}>{Product.name}</div>
+            <div style={{ fontSize: "28px" }}>{product.name}</div>
             <br />
-            <div style={{ fontSize: "14px" }}>review</div>
+            <div style={{ fontSize: "14px" }}>
+              {calRating(product.review?.rating)} ( {product.review?.number}{" "}
+              reviews )
+            </div>
             <br />
-            <div style={{ fontSize: "14px" }}>{Product.description}</div>
+            <div style={{ fontSize: "14px" }}>{product.description}</div>
             <br />
             <div style={{ fontSize: "14px" }}>price</div>
             <div
@@ -100,7 +109,7 @@ export default function ProductDetail() {
                 fontFamily: "boonBlod",
               }}
             >
-              ฿ {Product.price}
+              ฿ {product.price}
             </div>
             <br />
             <div style={{ display: "flex" }}>

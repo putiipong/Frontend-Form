@@ -9,6 +9,10 @@ function Header(props) {
     history.push("/Cart");
   }
 
+  function clickToHome() {
+    history.push("/");
+  }
+
   return (
     <div
       style={{
@@ -22,7 +26,7 @@ function Header(props) {
       }}
     >
       <div>
-        <COBLogo />
+        <COBLogo onClick={clickToHome} />
       </div>
       <div
         style={{

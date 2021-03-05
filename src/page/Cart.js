@@ -32,9 +32,9 @@ function Cart(props) {
         >
           <div
             style={{
-              FontFamily: "Boon",
-              FontStyle: "Medium",
-              FontSize: "28px",
+              fontFamily: "Boon",
+              fontStyle: "Medium",
+              fontSize: "28px",
             }}
           >
             <h3 style={{ marginBottom: "0px", marginTop: "0px" }}>Cart</h3>
@@ -45,6 +45,8 @@ function Cart(props) {
               justifyContent: "space-between",
               alignItems: "center",
               borderBottom: "1px solid #DEDEDE",
+              fontSize: "18px",
+              fontFamily: "Boon",
             }}
           >
             <h5

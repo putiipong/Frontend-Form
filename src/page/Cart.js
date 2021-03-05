@@ -168,7 +168,7 @@ function Cart(props) {
                   }, 0)}
                 </h3>
               </div>
-              <div
+              <label
                 style={{
                   display: "flex",
                   justifyContent: "center",
@@ -182,7 +182,7 @@ function Cart(props) {
                 }}
               >
                 PROCEED TO CHECK OUT
-              </div>
+              </label>
             </div>
           </div>
         </div>

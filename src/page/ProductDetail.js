@@ -186,7 +186,7 @@ function ProductDetail(props) {
                   price: product.price,
                 })
               }
-              text="ADD TO CART"
+              text={<label>ADD TO CART</label>}
             />
           </div>
         </div>

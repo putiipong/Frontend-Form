@@ -32,12 +32,12 @@ function Header(props) {
           minWidth: "100vh",
         }}
       >
-        <span>Home</span>
-        <span>New Products</span>
-        <span>Women</span>
-        <span>Men</span>
-        <span>Kid</span>
-        <span>Accessories</span>
+        <label>Home</label>
+        <label>New Products</label>
+        <label>Women</label>
+        <label>Men</label>
+        <label>Kid</label>
+        <label>Accessories</label>
       </div>
       <div>
         <CartLogo style={{ position: "absolute", right: "9.5%" }} />
@@ -70,9 +70,9 @@ function Header(props) {
             }, 0)}
           </h6>
         </div>
-        <span onClick={handleonClick} style={{ fontSize: "12px" }}>
+        <label onClick={handleonClick} style={{ fontSize: "12px" }}>
           Cart
-        </span>
+        </label>
       </div>
     </div>
   );

@@ -94,6 +94,13 @@ function Cart(props) {
                         display: "flex",
                         justifyContent: "flex-start",
                         alignItems: "center",
+                        overflow: "hidden",
+                        color: "#484848",
+                        fontFamily: "Boon",
+                        fontSize: "14px",
+                        lineHeight: "18px",
+                        fontStyle: "normal",
+                        fontWeight: "600",
                       }}
                     >
                       {product.name}

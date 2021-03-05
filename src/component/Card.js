@@ -101,7 +101,6 @@ export default function Card() {
                   </div>
                   <div
                     style={{
-                      overflow: "hidden",
                       color: "#484848",
                       fontFamily: "Boon",
                       fontSize: "14px",

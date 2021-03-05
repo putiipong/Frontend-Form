@@ -103,9 +103,11 @@ export default function Card() {
                     style={{
                       overflow: "hidden",
                       color: "#484848",
-                      fontFamily: "Boon-Bold",
-                      fontStyle: "SemiBold",
+                      fontFamily: "Boon",
                       fontSize: "14px",
+                      lineHeight: "18px",
+                      fontStyle: "normal",
+                      fontWeight: "600",
                     }}
                   >
                     {product.name}

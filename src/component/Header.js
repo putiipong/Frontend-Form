@@ -43,40 +43,63 @@ function Header(props) {
         <label>Kid</label>
         <label>Accessories</label>
       </div>
-      <div>
-        <CartLogo style={{ position: "absolute", right: "9.5%" }} />
+      <div
+        style={{
+          display: "flex",
+        }}
+      >
+        <div>
+          <CartLogo style={{ position: "absolute", right: "9.5%" }} />
 
-        <div
-          style={{
-            height: "16px",
-            width: "16px",
-            top: "25px",
-            borderRadius: "100px",
-            position: "absolute",
-            right: "9%",
-            backgroundColor: "#1A586A",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            fontSize: "12px",
-          }}
-        >
-          <h6
+          <div
             style={{
-              margin: "0px",
+              height: "16px",
+              width: "16px",
+              top: "22px",
+              borderRadius: "100px",
+              position: "absolute",
+              right: "9.3%",
+              backgroundColor: "#1A586A",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              fontSize: "12px",
             }}
           >
-            {props.products.reduce(function (accumulator, product) {
-              return accumulator + product.quantity;
-            }, 0)}
-          </h6>
+            <h6
+              style={{
+                margin: "0px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontSize: "12px",
+                fontStyle: "normal",
+              }}
+            >
+              {props.products.reduce(function (accumulator, product) {
+                return accumulator + product.quantity;
+              }, 0)}
+            </h6>
+          </div>
         </div>
-        <label onClick={handleonClick} style={{ fontSize: "12px" }}>
-          Cart
-        </label>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "24px",
+            height: "24px",
+          }}
+        >
+          <label
+            onClick={handleonClick}
+            style={{
+              fontSize: "12px",
+            }}
+          >
+            Cart
+          </label>
+        </div>
       </div>
     </div>
   );

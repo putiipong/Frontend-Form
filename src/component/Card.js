@@ -12,9 +12,13 @@ export default function Card() {
 
   useEffect(() => {
     async function getProduct() {
-      let results = await fetch("https://cc-mock-api.herokuapp.com/product");
-      let products = await results.json();
-      setProducts(products);
+      try {
+        let results = await fetch("https://cc-mock-api.herokuapp.com/product");
+        let products = await results.json();
+        setProducts(products);
+      } catch {
+        console.log("Fecth error please try again");
+      }
     }
     getProduct();
   }, []);
@@ -58,7 +62,6 @@ export default function Card() {
             >
               <div
                 style={{
-                  // width: "275px",
                   height: "195px",
                   display: "flex",
                   justifyContent: "center",
@@ -96,7 +99,17 @@ export default function Card() {
                       style={{ borderRadius: "10px", marginRight: "10px" }}
                     />
                   </div>
-                  <div style={{ overflow: "hidden" }}>{product.name}</div>
+                  <div
+                    style={{
+                      overflow: "hidden",
+                      color: "#484848",
+                      fontFamily: "Boon-Bold",
+                      fontStyle: "SemiBold",
+                      fontSize: "14px",
+                    }}
+                  >
+                    {product.name}
+                  </div>
                 </div>
               </div>
               <div
@@ -106,11 +119,35 @@ export default function Card() {
                 }}
               >
                 <div>
-                  <p style={{ fontSize: "12px" }}>Price</p>
-                  <div style={{ color: "#FF6F61" }}>฿{product.price}</div>
+                  <p
+                    style={{
+                      fontSize: "12px",
+                      color: "#939393",
+                      marginBottom: "4px",
+                      marginLeft: "65px",
+                    }}
+                  >
+                    Price
+                  </p>
+                  <div
+                    style={{
+                      color: "#FF6F61",
+                      marginBottom: "16px",
+                      marginLeft: "65px",
+                    }}
+                  >
+                    ฿{product.price}
+                  </div>
                 </div>
                 <div>
-                  <p style={{ fontSize: "12px" }}>
+                  <p
+                    style={{
+                      fontSize: "12px",
+                      color: "#939393",
+                      marginBottom: "4px",
+                      marginRight: "21px",
+                    }}
+                  >
                     Review ({product.review.number} reviews)
                   </p>
                   <div>{calRating(product.review.rating)}</div>

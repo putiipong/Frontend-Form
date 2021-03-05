@@ -1,6 +1,6 @@
 import { ReactComponent as AddCartLogo } from "../icons/add-cart.svg";
 
-export default function ButtonAddToCart() {
+export default function ButtonAddToCart(prop) {
   return (
     <div
       style={{
@@ -14,8 +14,9 @@ export default function ButtonAddToCart() {
         borderRadius: "10px",
         fontSize: "14px",
       }}
+      onClick={prop.onClick}
     >
-      <AddCartLogo /> <span>ADD TO CART</span>
+      <AddCartLogo /> {prop.text}
     </div>
   );
 }

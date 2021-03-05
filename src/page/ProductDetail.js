@@ -2,30 +2,36 @@ import Header from "../component/Header";
 import Footer from "../component/Footer";
 import ButtonAddToCart from "../component/ButtonAddToCart";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Star from "../icons/star.svg";
 import StarFull from "../icons/starFull.svg";
+import { connect } from "react-redux";
+import { addToCart } from "../redux/Products/product.action";
 
-export default function ProductDetail() {
+function ProductDetail(props) {
   const [product, setProduct] = useState({});
   const [count, setCount] = useState(1);
+  const history = useHistory();
   const star = <img src={Star} alt="star" width="12px" height="12px" />;
   const starfull = <img src={StarFull} alt="star" width="12px" height="12px" />;
   let params = useParams();
-  console.log(params.ProductID);
+  console.log(params.productID);
 
   useEffect(() => {
-    async function GetProductById() {
+    async function getProductById() {
       let results = await fetch(
-        "https://cc-mock-api.herokuapp.com/product/" + params.ProductID
+        "https://cc-mock-api.herokuapp.com/product/" + params.productID
       );
-      let Product = await results.json();
-      console.log(Product);
-      setProduct(Product);
+      let product = await results.json();
+      console.log(product);
+      setProduct(product);
     }
-    GetProductById();
+    getProductById();
   }, []);
 
+  function handleaddToCart() {
+    history.push("/Cart");
+  }
   function handleSubtractItem() {
     if (count <= 1) {
       setCount(1);
@@ -43,14 +49,13 @@ export default function ProductDetail() {
     return array.fill(starfull, 0, rating);
   }
 
-  function handleAddToCart() {}
-
   return (
     <div style={{ backgroundColor: "#E5E5E5", height: "638px" }}>
       <Header />
       <div
         style={{
           width: "100%",
+          height: "555px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -61,6 +66,7 @@ export default function ProductDetail() {
           style={{
             margin: "50px",
             width: "1166px",
+            height: "448px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -73,6 +79,7 @@ export default function ProductDetail() {
           <div
             style={{
               width: "40%",
+              borderRadius: "15px",
             }}
           >
             <img
@@ -92,16 +99,22 @@ export default function ProductDetail() {
               overflow: "hidden",
             }}
           >
-            <div style={{ fontSize: "28px" }}>{product.name}</div>
+            <div
+              style={{ fontSize: "28px", fontFamily: "Boon", color: "#707070" }}
+            >
+              {product.name}
+            </div>
             <br />
-            <div style={{ fontSize: "14px" }}>
+            <div style={{ fontSize: "14px", fontFamily: "Boon-Regular" }}>
               {calRating(product.review?.rating)} ( {product.review?.number}{" "}
               reviews )
             </div>
             <br />
-            <div style={{ fontSize: "14px" }}>{product.description}</div>
+            <div style={{ fontSize: "14px", color: "#939393" }}>
+              {product.description}
+            </div>
             <br />
-            <div style={{ fontSize: "14px" }}>price</div>
+            <div style={{ fontSize: "14px", color: "#939393" }}>price</div>
             <div
               style={{
                 color: "#FA7268",
@@ -119,6 +132,7 @@ export default function ProductDetail() {
                   display: "flex",
                   justifyContent: "center",
                   alignContent: "center",
+                  color: "#484848",
                 }}
               >
                 <p>Quantity:</p>
@@ -163,7 +177,17 @@ export default function ProductDetail() {
                 </div>
               </div>
             </div>
-            <ButtonAddToCart onClick={handleAddToCart} />
+            <ButtonAddToCart
+              onClick={() =>
+                props.addToCart({
+                  img_url: product.image_url,
+                  name: product.name,
+                  quantity: count,
+                  price: product.price,
+                })
+              }
+              text="ADD TO CART"
+            />
           </div>
         </div>
       </div>
@@ -171,3 +195,5 @@ export default function ProductDetail() {
     </div>
   );
 }
+
+export default connect(null, { addToCart })(ProductDetail);

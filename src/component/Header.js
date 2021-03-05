@@ -1,10 +1,13 @@
 import { ReactComponent as COBLogo } from "../logo.svg";
 import { ReactComponent as CartLogo } from "../icons/cart.svg";
-import { useState } from "react";
-import { useTotal } from "../utilitie/usetotal";
+import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+function Header(props) {
+  let history = useHistory();
 
-export default function Header() {
-  let { totalItem, settotalItem } = useTotal();
+  function handleonClick() {
+    history.push("/Cart");
+  }
 
   return (
     <div
@@ -38,6 +41,7 @@ export default function Header() {
       </div>
       <div>
         <CartLogo style={{ position: "absolute", right: "9.5%" }} />
+
         <div
           style={{
             height: "16px",
@@ -61,11 +65,23 @@ export default function Header() {
               alignItems: "center",
             }}
           >
-            {totalItem}
+            {props.products.reduce(function (accumulator, product) {
+              return accumulator + product.quantity;
+            }, 0)}
           </h6>
         </div>
-        <span style={{ fontSize: "12px" }}>Cart</span>
+        <span onClick={handleonClick} style={{ fontSize: "12px" }}>
+          Cart
+        </span>
       </div>
     </div>
   );
 }
+const mapStateToProps = (state) => {
+  console.log(state, ",,,,,,,,state");
+  return {
+    products: state.product.product,
+  };
+};
+
+export default connect(mapStateToProps)(Header);

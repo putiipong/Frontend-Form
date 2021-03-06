@@ -1,7 +1,6 @@
 import { ADDTOCART } from "./product.type";
 
 export const addToCart = (products) => {
-  console.log("___ACTION: ", products);
   return {
     type: ADDTOCART,
     payload: {

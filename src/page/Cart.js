@@ -3,7 +3,6 @@ import Footer from "../component/Footer";
 import { connect } from "react-redux";
 
 function Cart(props) {
-  console.log(props, "porppppppppppppppppppppp");
   return (
     <div
       style={{
@@ -71,9 +70,10 @@ function Cart(props) {
             </div>
           </div>
           <div style={{ overflow: "auto", height: "161px" }}>
-            {props.products.map((product) => {
+            {props.products.map((product, index) => {
               return (
                 <div
+                  key={index}
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
@@ -202,7 +202,6 @@ function Cart(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state, ",,,,,,,,state");
   return {
     products: state.product.product,
   };

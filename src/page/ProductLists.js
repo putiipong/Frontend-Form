@@ -1,10 +1,8 @@
 import Header from "../component/Header";
 import Card from "../component/Card";
 import Footer from "../component/Footer";
-import { connect } from "react-redux";
 
 function ProductLists(products) {
-  console.log(products, "mmmmmmmmmmmmmmmmm");
   return (
     <div style={{ backgroundColor: "#DFE6EF" }}>
       <Header />

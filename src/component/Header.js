@@ -36,7 +36,7 @@ function Header(props) {
           minWidth: "100vh",
         }}
       >
-        <label>Home</label>
+        <label onClick={clickToHome}>Home</label>
         <label>New Products</label>
         <label>Women</label>
         <label>Men</label>
@@ -105,7 +105,6 @@ function Header(props) {
   );
 }
 const mapStateToProps = (state) => {
-  console.log(state, ",,,,,,,,state");
   return {
     products: state.product.product,
   };

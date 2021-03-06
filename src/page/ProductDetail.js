@@ -2,20 +2,16 @@ import Header from "../component/Header";
 import Footer from "../component/Footer";
 import ButtonAddToCart from "../component/ButtonAddToCart";
 import { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import Star from "../icons/star.svg";
-import StarFull from "../icons/starFull.svg";
+import { useParams } from "react-router-dom";
+import { RatingStars } from "../component/RatingStars";
 import { connect } from "react-redux";
 import { addToCart } from "../redux/Products/product.action";
 
 function ProductDetail(props) {
   const [product, setProduct] = useState({});
   const [count, setCount] = useState(1);
-  const history = useHistory();
-  const star = <img src={Star} alt="star" width="12px" height="12px" />;
-  const starfull = <img src={StarFull} alt="star" width="12px" height="12px" />;
+
   let params = useParams();
-  console.log(params.productID);
 
   useEffect(() => {
     async function getProductById() {
@@ -23,15 +19,12 @@ function ProductDetail(props) {
         "https://cc-mock-api.herokuapp.com/product/" + params.productID
       );
       let product = await results.json();
-      console.log(product);
+
       setProduct(product);
     }
     getProductById();
   }, []);
 
-  function handleaddToCart() {
-    history.push("/Cart");
-  }
   function handleSubtractItem() {
     if (count <= 1) {
       setCount(1);
@@ -42,11 +35,6 @@ function ProductDetail(props) {
 
   function handleAddItem() {
     setCount(count + 1);
-  }
-
-  function calRating(rating) {
-    const array = [star, star, star, star, star];
-    return array.fill(starfull, 0, rating);
   }
 
   return (
@@ -106,8 +94,8 @@ function ProductDetail(props) {
             </div>
             <br />
             <div style={{ fontSize: "14px", fontFamily: "Boon-Regular" }}>
-              {calRating(product.review?.rating)} ( {product.review?.number}{" "}
-              reviews )
+              <RatingStars rating={product.review?.rating} /> ({" "}
+              {product.review?.number} reviews )
             </div>
             <br />
             <div style={{ fontSize: "14px", color: "#939393" }}>

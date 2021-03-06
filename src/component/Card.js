@@ -1,17 +1,14 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import Star from "../icons/star.svg";
-import StarFull from "../icons/starFull.svg";
+import { RatingStars } from "../component/RatingStars";
 
 export default function Card() {
   const [products, setProducts] = useState([]);
-  let history = useHistory();
-  const star = <img src={Star} alt="star" width="12px" height="12px" />;
-  const starfull = <img src={StarFull} alt="star" width="12px" height="12px" />;
 
+  let history = useHistory();
   useEffect(() => {
-    async function getProduct() {
+    async function getProducts() {
       try {
         let results = await fetch("https://cc-mock-api.herokuapp.com/product");
         let products = await results.json();
@@ -20,16 +17,11 @@ export default function Card() {
         console.log("Fecth error please try again");
       }
     }
-    getProduct();
+    getProducts();
   }, []);
 
   function viewPost(productID) {
-    history.push("/ProductDetail/" + productID);
-  }
-
-  function calRating(rating) {
-    const array = [star, star, star, star, star];
-    return array.fill(starfull, 0, rating);
+    history.push("/product/" + productID + "/detail");
   }
 
   return (
@@ -43,9 +35,10 @@ export default function Card() {
           marginLeft: "80px",
         }}
       >
-        {products.map((product) => {
+        {products.map((product, index) => {
           return (
             <div
+              key={index}
               style={{
                 width: "275px",
                 height: "308px",
@@ -151,7 +144,9 @@ export default function Card() {
                   >
                     Review ({product.review.number} reviews)
                   </p>
-                  <div>{calRating(product.review.rating)}</div>
+                  <div>
+                    <RatingStars rating={product.review.rating} />
+                  </div>
                 </div>
               </div>
             </div>

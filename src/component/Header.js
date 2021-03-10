@@ -1,4 +1,3 @@
-import { ReactComponent as COBLogo } from "../logo.svg";
 import { ReactComponent as CartLogo } from "../icons/cart.svg";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
@@ -6,7 +5,7 @@ function Header(props) {
   let history = useHistory();
 
   function handleonClick() {
-    history.push("/Cart");
+    history.push("/cart");
   }
 
   function clickToHome() {
@@ -25,9 +24,7 @@ function Header(props) {
         fontSize: "16px",
       }}
     >
-      <div>
-        <COBLogo onClick={clickToHome} />
-      </div>
+      <div>LOGO</div>
       <div
         style={{
           display: "flex",
@@ -105,6 +102,7 @@ function Header(props) {
   );
 }
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     products: state.product.product,
   };

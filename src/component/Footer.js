@@ -26,7 +26,7 @@ export default function Footer() {
           textAlign: "left",
         }}
       >
-        Copyright © 2021 ChomCHOB.All RightS Reserved
+        Copyright © 2021 All RightS Reserved
       </footer>
     </footer>
   );

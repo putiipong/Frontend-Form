@@ -7,7 +7,6 @@ const INITIAL_STATE1 = {
 function productReducer(state = INITIAL_STATE1, action) {
   switch (action.type) {
     case ADDTOCART:
-      console.log("item");
       return {
         ...state,
         product: [
@@ -20,6 +19,7 @@ function productReducer(state = INITIAL_STATE1, action) {
           },
         ],
       };
+
     default:
       return state;
   }

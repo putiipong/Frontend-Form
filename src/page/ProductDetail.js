@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { addToCart } from "../redux/Products/product.action";
 
 function ProductDetail(props) {
+  console.log(props);
   const [product, setProduct] = useState({});
   const [count, setCount] = useState(1);
 
@@ -19,7 +20,6 @@ function ProductDetail(props) {
         "https://cc-mock-api.herokuapp.com/product/" + params.productID
       );
       let product = await results.json();
-
       setProduct(product);
     }
     getProductById();

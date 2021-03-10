@@ -2,7 +2,7 @@ import Header from "../component/Header";
 import Card from "../component/Card";
 import Footer from "../component/Footer";
 
-function ProductLists(products) {
+function ProductLists() {
   return (
     <div style={{ backgroundColor: "#DFE6EF" }}>
       <Header />
